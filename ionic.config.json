@@ -1,6 +1,6 @@
 {
   "name": "csf_utfpr_1",
-  "app_id": "",
+  "app_id": "6dc1511f",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

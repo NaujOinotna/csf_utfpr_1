@@ -1,0 +1,64 @@
+<ion-header>
+
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      
+    <ion-title>OBJETOS</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addObject()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngFor="let object of objects; let i = index">
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-only small color="danger" (click)="removeObject(i)"><ion-icon name="remove"></ion-icon></button>  
+        <div style="
+          margin-left: 30px;
+          margin-bottom: 30px;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          position: center;
+          //transform: rotate(45deg);"
+          [style.background-color]="object.color">
+        </div> 
+      </ion-col>
+      <ion-col>
+        <button ion-button small icon-only 
+          *ngFor="let color of colors"
+          style="width: 27%; height: 27%; border-radius: 10%;"
+          [style.background-color]="color"
+          (click)="changeColor(i, color)"></button>
+      </ion-col>
+    </ion-row>
+
+     <ion-card-content>
+        <ion-item>
+          <ion-label color="primary">Posição inicial</ion-label>
+          <ion-input placeholder="Pos{{i+1}}[i]=(0,0)" [(ngModel)]="objects[i].initialPosition" (input)="somethingChanged()"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary">Rotação inicial</ion-label>
+          <ion-input placeholder="Rot{{i+1}}[i]=0" [(ngModel)]="objects[i].initialRotation" (input)="somethingChanged()"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary">Raio</ion-label>
+          <ion-input placeholder="Raio{{i+1}}=40" [(ngModel)]="objects[i].radius" (input)="somethingChanged()"></ion-input>
+        </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

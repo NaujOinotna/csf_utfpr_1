@@ -1,0 +1,22 @@
+page-scene-view {
+
+}
+
+.cross {
+  background: black;
+  height: 200px;
+  position: relative;
+  width: 4px;
+  top: -50px;
+  left: -2px;
+}
+.cross:after {
+  background: black;
+  content: "";
+  height: 4px;
+  left: -98px;
+  position: absolute;
+  top: 98px;
+  width: 200px;
+  z-index: -1
+}

@@ -1,0 +1,73 @@
+<!--
+  Generated template for the RulesViewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+
+		<ion-title>REGRAS</ion-title>
+
+		<ion-buttons end>
+			<button ion-button icon-only (click)="addRuleCard()">
+				<ion-icon name="add"></ion-icon>
+			</button>
+		</ion-buttons>
+
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content>
+	<ion-navbar color="primary">
+		<ion-title>Condições iniciais</ion-title>
+	</ion-navbar>
+
+	<ion-card-content>
+		<ion-row *ngFor="let object of objects; let j = index; trackBy:trackByFn">
+			<ion-title>Pos{{j+1}}_i={{object.initialPosition}}</ion-title>
+			<ion-title>Raio{{j+1}}_i={{object.radius}}</ion-title>
+		</ion-row>
+		<ion-row *ngFor="let rule of initialConditions; let j = index; trackBy:trackByFn">
+			<button margin-right item-start ion-button icon-only small color="danger" (click)="removeInitialCondition(0, j)">
+				<ion-icon name="remove"></ion-icon>
+			</button>
+			<ion-input style="border: 3px blue" placeholder="condição inicial" [(ngModel)]="initialConditions[j]" (input)="initialConditionsChanged()"></ion-input>
+		</ion-row>
+		<ion-row>
+			<button item-start ion-button icon-only small color="secondary" (click)="addInitialCondition()">
+				<ion-icon name="add"></ion-icon>
+			</button>
+		</ion-row>
+	</ion-card-content>
+
+	<ion-card *ngFor="let ruleCard of ruleCards; let i = index; trackBy:trackByFn">
+		<ion-navbar color="primary">
+			<button ion-button small icon-only color="danger" (click)="removeRuleCard(i)">
+				<ion-icon name="remove"></ion-icon>
+			</button>
+			<ion-title style="padding-left: 20px; text-align: center"> <ion-input style="text-align: center" margin-left placeholder="condição" [(ngModel)]="ruleCard.condition" (changed)="ruleCardsChanged()"></ion-input></ion-title>
+		</ion-navbar>
+
+		<ion-card-content>
+			<ion-row *ngFor="let rule of ruleCard.rules; let j = index; trackBy:trackByFn">
+				<button margin-right item-start ion-button icon-only small color="danger" (click)="removeRule(i, j)">
+					<ion-icon name="remove"></ion-icon>
+				</button>
+				<ion-input style="border: 3px blue" placeholder="regra" [(ngModel)]="ruleCards[i].rules[j]" (input)="ruleCardsChanged()"></ion-input>
+			</ion-row>
+			<ion-row>
+				<button item-start ion-button icon-only small color="secondary" (click)="addRule(i)">
+					<ion-icon name="add"></ion-icon>
+				</button>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+
+</ion-content>

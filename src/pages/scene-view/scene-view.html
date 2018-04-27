@@ -1,0 +1,34 @@
+<!--
+  Generated template for the SceneViewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+		<ion-icon name="menu"></ion-icon>
+	</button>
+
+	<ion-title>CENA</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="margin: 0; height: 100%; overflow: hidden;">
+	<div style="width: 100%; height: 100%;" 
+			(touchstart)="touchstartScene($event)"
+			(touchend)="touchendScene($event)"
+			(touchmove)="touchmoveScene($event)">
+		<div id="scene" class="cross" style="
+				  top: 0px; left: 0px; 
+				  position: absolute;">
+		</div>
+	</div>
+</ion-content>
+
+<ion-footer>
+	<button ion-button block color="{{!running ? 'secondary' : 'danger'}}" (click)='start($event)'> Iniciar </button>
+</ion-footer>

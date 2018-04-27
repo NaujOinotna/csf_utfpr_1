@@ -7,8 +7,12 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+	<button ion-button icon-end large clear (click)="startApp()">
+		START
+		<ion-icon name="arrow-forward"></ion-icon>
+	</button>
+	<button ion-button icon-end large color='danger' (click)="clear()">
+		Limpar dados
+		<ion-icon name="close"></ion-icon>
+	</button>
 </ion-content>
